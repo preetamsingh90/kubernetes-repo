@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ReplicationController
+metadata: # this is for replication controller
+  name: nginx-rc
+  labels:
+    env: demo
+spec:  # spec for replication controller
+  replicas: 3 # Correct field for number of replicas
+  selector: # Optional but recommended for replication controllers
+    env: demo
+  template: # this is pod template
+    metadata: # this is for pod
+      labels:
+        env: demo
+    spec: # spec for pod
+      containers:
+      - image: nginx
+        name: nginx
